@@ -8,12 +8,12 @@
     },
     "main": "BitOperations.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "devDependancies": {
-        "jest": "@"
+        "test": "jest --watch"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC"
+    "author": "Mark Kozel <Development@MarkKozel.net>",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^23.6.0"
+    }
 }
