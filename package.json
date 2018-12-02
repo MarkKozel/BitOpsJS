@@ -8,12 +8,14 @@
     },
     "main": "BitOperations.js",
     "scripts": {
-        "test": "jest --watch"
+        "test": "jest --watch",
+        "doc": ".\\node_modules\\.bin\\jsdoc -d doc BitOperations.js"
     },
     "keywords": [],
     "author": "Mark Kozel <Development@MarkKozel.net>",
     "license": "ISC",
     "devDependencies": {
-        "jest": "^23.6.0"
+        "jest": "^23.6.0",
+        "jsdoc": "^3.5.5"
     }
 }
