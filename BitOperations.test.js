@@ -173,4 +173,8 @@ describe('Sign Extend', () => {
     test('Test signExtend(1101, 16, 1)', () => {
         expect(bitOps.signExtend('1101', 16, '1')).toBe('1111111111111101');
     });
+
+    test('Test signExtend(1100, 16, 1)', () => {
+        expect(bitOps.signExtend('1100', 16, '1')).toBe('1111111111111100');
+    });
 });
