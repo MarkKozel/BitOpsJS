@@ -1,54 +1,77 @@
 class BitOperations {
     constructor() {}
 
-    addBits(bits1, bits2) {
-            let result = '';
-            if (this.isBitString(bits1) && this.isBitString(bits2)) {
-                const longestLen = Math.max(bits1.length, bits2.length);
-                const bitsOne =
-                    this.signExtend(bits1, longestLen, bits1.charAt(bits1.length - 1));
-                const bitsTwo =
-                    this.signExtend(bits2, longestLen, bits2.charAt(bits2.length - 1));
+    addBitStrings(bits1, bits2) {
+        let results = {
+            "sum": '',
+            "carryOut": ''
+        };
 
-                var sum = -1;
-                var carry = -1;
-                for (var x = 0; x < longestLen; x++) {
-                    var { s, c } = addBits(parseInt(bitsOne.charAt(x)), parseInt(bitsTwo.charAt(x)));
-                    sum = s;
-                    carry = c;
+        if (this.isBitString(bits1) && this.isBitString(bits2)) {
+            const longestLen = Math.max(bits1.length, bits2.length);
+            const bitsOne =
+                this.signExtend(bits1, longestLen, bits1.charAt(bits1.length - 1));
+            const bitsTwo =
+                this.signExtend(bits2, longestLen, bits2.charAt(bits2.length - 1));
+            // console.log("bitsOne: " + bitsOne);
+            // console.log("bitsTwo: " + bitsTwo);
+            var lastCarryOut = 0;
 
-                }
-            } else {
-                result = 'undef';
+            for (var x = longestLen - 1; x >= 0; x--) {
+                var b1 = parseInt(bitsOne.charAt(x));
+                var b2 = parseInt(bitsTwo.charAt(x));
+                var reply = this.addBits(b1, b2, lastCarryOut);
+                results.sum = reply.sum + results.sum;
+                lastCarryOut = parseInt(reply.carryOut);
+
+                // console.log("reply.sum: " + reply.sum);
+                // console.log("reply.carryOut: " + reply.carryOut);
+
             }
-            return result;
-        }
-        /**
-         * Adds 1 bits
-         * @param {Number} bit1
-         * @param {Number} bit2
-         * returns {sum, carry}. Contains sum/carry or {-1,-1} if params are not bits
-         */
-    addBits(bit1, bit2) {
-        var sum = -1;
-        var carry = -1;
+            results.carryOut = lastCarryOut;
 
-        if (bit1 + bit2 === 0) { // 0 and 0
-            sum = 0;
-            carry = 0;
+        } else {
+            results.sum = "undef";
+            results.carryOut = "undef";
         }
-        if (bit1 + bit2 === 1) { // 0/1 or 1/0
-            sum = 1;
-            carry = 0;
+        return results;
+    }
+
+    /**
+     * Adds 1 bits
+     * @param {Number} bit1 first bit to add
+     * @param {Number} bit2 second bit to add
+     * @param {Number} carryIn carry in bit (default to 0 if not supplied)
+     * returns {sum, carryOut}. Contains sum/carryOut or {"undef","undef"} if params are not bits
+     */
+    addBits(bit1, bit2, carryIn = 0) {
+        let results = {
+            "sum": "undef",
+            "carryOut": "undef"
+        };
+
+        switch (bit1 + bit2 + carryIn) {
+            case 0:
+                results.sum = 0;
+                results.carryOut = 0;
+                break;
+            case 1:
+                results.sum = 1;
+                results.carryOut = 0;
+                break;
+            case 2:
+                results.sum = 0;
+                results.carryOut = 1;
+                break;
+            case 3:
+                results.sum = 1;
+                results.carryOut = 1;
+                break;
+            default:
+                results.sum = "undef";
+                results.carryOut = "undef";
         }
-        if (bit1 + bit2 === 2) { // 1 & 1
-            sum = 1;
-            carry = 1;
-        }
-        return {
-            sum: sum,
-            carry: carry
-        }
+        return results;
     }
 
     /**
@@ -56,8 +79,7 @@ class BitOperations {
      * @param {String} bitString
      * @param {Number} length
      * @param {char} pad
-     * returns sign extended bitString or 'undef' is bitString is not a bit
-     *     string
+     * returns sign extended bitString or 'undef' is bitString is not a bit string
      */
     signExtend(bitString, length, pad) {
         var result = '';
@@ -76,8 +98,7 @@ class BitOperations {
     /**
      * Determines if bitString is a bit string
      * @param {String} bitString
-     * returns returns true if bitString is a bit string. Returns false
-     *     otherwise
+     * returns returns true if bitString is a bit string. Returns false otherwise
      */
     isBitString(bitString) {
         return /^[01]+$/.test(bitString);

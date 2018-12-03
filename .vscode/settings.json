@@ -8,7 +8,7 @@
       {
         "type": "node",
         "request": "launch",
-        "name": "Debug current file (W)",
+        "name": "Debug current file (P)",
         "args": ["${relativeFile}"],
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen"
@@ -16,8 +16,8 @@
       {
         "type": "node",
         "request": "launch",
-        "name": "Jest current file (W)",
-        "cwd": "Z:\\Users\\mark\\Development\\Projects\\web\\BitOpsJS\\node_modules\\jest\\node_modules\\.bin\\jest",
+        "name": "Jest current file (P)",
+        "cwd": "${workspaceFolder}\\node_modules\\.bin\\jest",
         "args": ["-- ci --bail ${relativeFile}"],
         "console": "integratedTerminal",
         "internalConsoleOptions": "neverOpen"
