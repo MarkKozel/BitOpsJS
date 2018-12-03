@@ -1,4 +1,4 @@
-var BitOps = require("./BitOperations.js");
+var BitOps = require("./src/BitOperations.js");
 
 bitOps = new BitOps();
 let results = bitOps.addBitStrings("000001", "10");

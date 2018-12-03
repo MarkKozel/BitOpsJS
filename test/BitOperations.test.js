@@ -1,4 +1,4 @@
-var BitOps = require('./BitOperations.js');
+var BitOps = require('../src/BitOperations.js');
 var bitOps;
 
 beforeAll(() => {

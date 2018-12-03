@@ -1,6 +1,14 @@
+/** Class containing bit arithmatic and logic operations
+ * 
+ */
 class BitOperations {
     constructor() {}
 
+    /**
+     * Adds 2 bit strings. Provides sum and carry out results
+     * @param {String} bits1 first bit string
+     * @param {String} bits2 second bit string
+     */
     addBitStrings(bits1, bits2) {
         let results = {
             "sum": '',
@@ -13,8 +21,6 @@ class BitOperations {
                 this.signExtend(bits1, longestLen, bits1.charAt(bits1.length - 1));
             const bitsTwo =
                 this.signExtend(bits2, longestLen, bits2.charAt(bits2.length - 1));
-            // console.log("bitsOne: " + bitsOne);
-            // console.log("bitsTwo: " + bitsTwo);
             var lastCarryOut = 0;
 
             for (var x = longestLen - 1; x >= 0; x--) {
@@ -23,9 +29,6 @@ class BitOperations {
                 var reply = this.addBits(b1, b2, lastCarryOut);
                 results.sum = reply.sum + results.sum;
                 lastCarryOut = parseInt(reply.carryOut);
-
-                // console.log("reply.sum: " + reply.sum);
-                // console.log("reply.carryOut: " + reply.carryOut);
 
             }
             results.carryOut = lastCarryOut;

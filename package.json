@@ -8,8 +8,8 @@
     },
     "main": "BitOperations.js",
     "scripts": {
-        "test": "jest --watch",
-        "doc": ".\\node_modules\\.bin\\jsdoc -d doc BitOperations.js"
+        "test": "jest --watch .\\test\\",
+        "doc": ".\\node_modules\\.bin\\jsdoc src -r -d doc -R README.md"
     },
     "keywords": [],
     "author": "Mark Kozel <Development@MarkKozel.net>",
