@@ -344,7 +344,7 @@
     
 
     
-    <h4 class="name" id="addBitStrings"><span class="type-signature"></span>addBitStrings<span class="signature">(bits1, bits2)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addBitStrings"><span class="type-signature"></span>addBitStrings<span class="signature">(bitString1, bitString2)</span><span class="type-signature"></span></h4>
     
 
     
@@ -388,7 +388,7 @@
 
         <tr>
             
-                <td class="name"><code>bits1</code></td>
+                <td class="name"><code>bitString1</code></td>
             
 
             <td class="type">
@@ -411,7 +411,7 @@
 
         <tr>
             
-                <td class="name"><code>bits2</code></td>
+                <td class="name"><code>bitString2</code></td>
             
 
             <td class="type">
@@ -469,6 +469,164 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="BitOperations.js.html">BitOperations.js</a>, <a href="BitOperations.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="and"><span class="type-signature"></span>and<span class="signature">(bitString1, bitString2)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Performs bit-wise AND on 2 bit strings. Returns result or 'undef' if any inputs are not bit strings
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bitString1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">first bit string to and</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bitString2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">second bit string to and</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="BitOperations.js.html">BitOperations.js</a>, <a href="BitOperations.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -772,6 +930,164 @@
     
 
     
+    <h4 class="name" id="or"><span class="type-signature"></span>or<span class="signature">(bitString1, bitString2)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Performs bit-wise OR on 2 bit strings. Returns result or 'undef' if any inputs are not bit strings
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bitString1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">first bit string to and</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bitString2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">second bit string to and</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="BitOperations.js.html">BitOperations.js</a>, <a href="BitOperations.js.html#line164">line 164</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="signExtend"><span class="type-signature"></span>signExtend<span class="signature">(bitString, length, pad)</span><span class="type-signature"></span></h4>
     
 
@@ -969,7 +1285,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Dec 03 2018 13:51:02 GMT-0800 (Pacific Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Dec 03 2018 15:19:41 GMT-0800 (Pacific Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

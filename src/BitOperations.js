@@ -1,26 +1,27 @@
+// (function(exports) {
 /** Class containing bit arithmatic and logic operations
  * 
  */
 class BitOperations {
-    constructor() {}
+    constructor() {};
 
     /**
      * Adds 2 bit strings. Provides sum and carry out results
-     * @param {String} bits1 first bit string
-     * @param {String} bits2 second bit string
+     * @param {String} bitString1 first bit string
+     * @param {String} bitString2 second bit string
      */
-    addBitStrings(bits1, bits2) {
+    addBitStrings(bitString1, bitString2) {
         let results = {
             "sum": '',
             "carryOut": ''
         };
 
-        if (this.isBitString(bits1) && this.isBitString(bits2)) {
-            const longestLen = Math.max(bits1.length, bits2.length);
+        if (this.isBitString(bitString1) && this.isBitString(bitString2)) {
+            const longestLen = Math.max(bitString1.length, bitString2.length);
             const bitsOne =
-                this.signExtend(bits1, longestLen, bits1.charAt(bits1.length - 1));
+                this.signExtend(bitString1, longestLen, bitString1.charAt(bitString1.length - 1));
             const bitsTwo =
-                this.signExtend(bits2, longestLen, bits2.charAt(bits2.length - 1));
+                this.signExtend(bitString2, longestLen, bitString2.charAt(bitString2.length - 1));
             var lastCarryOut = 0;
 
             for (var x = longestLen - 1; x >= 0; x--) {
@@ -129,6 +130,58 @@ class BitOperations {
         }
         return result;
     }
-}
 
-module.exports = BitOperations
+    /**
+     * Performs bit-wise AND on 2 bit strings. Returns result or 'undef' if any inputs are not bit strings
+     * @param {String} bitString1 first bit string to and
+     * @param {String} bitString2 second bit string to and
+     */
+    and(bitString1, bitString2) {
+        var result = "";
+        if (this.isBitString(bitString1) && this.isBitString(bitString2)) {
+            const longestLen = Math.max(bitString1.length, bitString2.length);
+            const bitsOne = this.signExtend(bitString1, longestLen, '0');
+            const bitsTwo = this.signExtend(bitString2, longestLen, '0');
+
+            for (var x = 0; x < longestLen; x++) {
+                if ((bitsOne.charAt(x) === '1') && (bitsTwo.charAt(x) === '1')) {
+                    result += "1";
+                } else {
+                    result += "0";
+                }
+            }
+        } else {
+            result = "undef";
+        }
+
+        return result
+    }
+
+    /**
+     * Performs bit-wise OR on 2 bit strings. Returns result or 'undef' if any inputs are not bit strings
+     * @param {String} bitString1 first bit string to and
+     * @param {String} bitString2 second bit string to and
+     */
+    or(bitString1, bitString2) {
+        var result = "";
+        if (this.isBitString(bitString1) && this.isBitString(bitString2)) {
+            const longestLen = Math.max(bitString1.length, bitString2.length);
+            const bitsOne = this.signExtend(bitString1, longestLen, '0');
+            const bitsTwo = this.signExtend(bitString2, longestLen, '0');
+
+            for (var x = 0; x < longestLen; x++) {
+                if ((bitsOne.charAt(x) === '1') || (bitsTwo.charAt(x) === '1')) {
+                    result += "1";
+                } else {
+                    result += "0";
+                }
+            }
+        } else {
+            result = "undef";
+        }
+
+        return result
+    }
+}
+// module.exports = BitOperations
+// })(typeof exports === 'undefined' ? this['BitOperations'] = {} : exports);
