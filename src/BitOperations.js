@@ -1,4 +1,8 @@
 // (function(exports) {
+
+// (function() {
+//   var Validator = (function() {
+
 /** Class containing bit arithmatic and logic operations
  * 
  */
@@ -182,6 +186,32 @@ class BitOperations {
 
         return result
     }
+
+    /**
+     * Converts bit string to decimal
+     * @param {String} bitString bit string to convert
+     */
+    convert(bitString) {
+        let results = {
+            "decimal": "undef",
+            "hexadecimal": "undef"
+        };
+
+        if ((typeof bitString === 'string') && (this.isBitString(bitString))) {
+            results.decimal = parseInt(bitString, 2).toString(10);
+            results.hexadecimal = parseInt(bitString, 2).toString(16);
+        }
+
+        return results;
+    }
 }
+// )();
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') { module.exports = BitOperations }
 // module.exports = BitOperations
 // })(typeof exports === 'undefined' ? this['BitOperations'] = {} : exports);
+
+// if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
+// module.exports = BitOperations;
+// else
+// window.BitOperations = BitOperations;
+// })();

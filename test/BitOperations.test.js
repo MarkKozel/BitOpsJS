@@ -178,3 +178,34 @@ describe('Sign Extend', () => {
         expect(bitOps.signExtend('1100', 16, '1')).toBe('1111111111111100');
     });
 });
+
+describe('Conversions', () => {
+    var result;
+    test('invalid inputs', () => {
+        result = bitOps.convert("022000");
+        expect(result.decimal).toBe("undef");
+        expect(result.hexadecimal).toBe("undef");
+
+        result = bitOps.convert("ASDF");
+        expect(result.decimal).toBe("undef");
+        expect(result.hexadecimal).toBe("undef");
+
+        result = bitOps.convert("");
+        expect(result.decimal).toBe("undef");
+        expect(result.hexadecimal).toBe("undef");
+    });
+
+    test('Good inputs', () => {
+        result = bitOps.convert("0");
+        expect(result.decimal).toBe("0");
+        expect(result.hexadecimal).toBe("0");
+
+        result = bitOps.convert("1111");
+        expect(result.decimal).toBe("15");
+        expect(result.hexadecimal).toBe("f");
+
+        result = bitOps.convert("10101100");
+        expect(result.decimal).toBe("172");
+        expect(result.hexadecimal).toBe("ac");
+    });
+});
