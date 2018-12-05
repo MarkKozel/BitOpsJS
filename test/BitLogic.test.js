@@ -1,10 +1,19 @@
+/**
+ * Jest test suite for Bit Logic
+ */
 var BitOps = require('../src/BitOperations.js');
 var bitOps;
 
+/**
+ * Setup before starting tests
+ */
 beforeAll(() => {
     bitOps = new BitOps();
 })
 
+/**
+ * Tests for NOT
+ */
 describe('Not', () => {
     test('Test not(1)', () => {
         expect(bitOps.not('1')).toBe('0');
@@ -23,6 +32,9 @@ describe('Not', () => {
     });
 });
 
+/**
+ * Tests for AND
+ */
 describe('And', () => {
     test('Invalid Inputs', () => {
         expect(bitOps.and('2', '1')).toBe('undef');
@@ -46,6 +58,9 @@ describe('And', () => {
 
 });
 
+/**
+ * Tests for OR
+ */
 describe('Or', () => {
     test('Invalid Inputs', () => {
         expect(bitOps.or('2', '1')).toBe('undef');

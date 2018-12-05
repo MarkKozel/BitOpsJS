@@ -1,10 +1,19 @@
+/**
+ * Jest test suite for Bit Operations
+ */
 var BitOps = require('../src/BitOperations.js');
 var bitOps;
 
+/**
+ * Setup before starting tests
+ */
 beforeAll(() => {
     bitOps = new BitOps();
 })
 
+/**
+ * Tests for ADD bits
+ */
 describe('Add Bits', () => {
 
     test('Test addBits(0,0)', () => {
@@ -74,6 +83,9 @@ describe('Add Bits', () => {
     });
 });
 
+/**
+ * Tests for ADD strings
+ */
 describe('Add Bit Strings', () => {
     test('2 positive numbers / no Carry Out', () => {
         var result = bitOps.addBitStrings("001", "010");
@@ -129,6 +141,9 @@ describe('Add Bit Strings', () => {
     });
 });
 
+/**
+ * Tests for isBitString
+ */
 describe('isBitString', () => {
 
     test('Test isBitString(1101)', () => {
@@ -144,24 +159,9 @@ describe('isBitString', () => {
     });
 });
 
-describe('Not', () => {
-    test('Test not(1)', () => {
-        expect(bitOps.not('1')).toBe('0');
-    });
-
-    test('Test not(1101)', () => {
-        expect(bitOps.not('1101')).toBe('0010');
-    });
-
-    test('Test not(2)', () => {
-        expect(bitOps.not('2')).toBe('undef');
-    });
-
-    test('Test not(101r)', () => {
-        expect(bitOps.not('2')).toBe('undef');
-    });
-});
-
+/**
+ * Tests for Sign Extention
+ */
 describe('Sign Extend', () => {
 
     test('Test signExtend(1101, 8, 0)', () => {
@@ -179,6 +179,9 @@ describe('Sign Extend', () => {
     });
 });
 
+/**
+ * Tests for Conversion
+ */
 describe('Conversions', () => {
     var result;
     test('invalid inputs', () => {
