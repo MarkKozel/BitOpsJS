@@ -1,8 +1,3 @@
-// (function(exports) {
-
-// (function() {
-//   var Validator = (function() {
-
 /** Class containing bit arithmatic and logic operations
  * 
  */
@@ -205,7 +200,8 @@ class BitOperations {
         return results;
     }
 }
-// )();
+
+// export default BitOperations;
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') { module.exports = BitOperations }
 // module.exports = BitOperations
 // })(typeof exports === 'undefined' ? this['BitOperations'] = {} : exports);

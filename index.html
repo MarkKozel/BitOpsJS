@@ -10,42 +10,83 @@
     <script language="javascript" type="text/javascript" src="./style/vue2Dev.js"></script>
     <!-- <script language="javascript" type="text/javascript" src="./style/popper.min.js"></script> -->
     <script language="javascript" type="text/javascript" src="./style/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
-    <script language="javascript" type="text/javascript" src="./style/toast-1.4/toast/toast.js"></script>
+    <!-- <script language="javascript" type="text/javascript" src="./style/toast-1.4/toast/toast.js"></script> -->
 
     <link rel="stylesheet" type="text/css" href="./style/bootstrap-4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./style/toast-1.4/toast/toast.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="src/BitOperations.js"></script>
 
     <title>Bit Operations</title>
 </head>
 
 <body>
-
     <div id="app">
         <div class="container container-fluid">
             <div class="row">
                 <div class="col">
                     <h1>Binary Logic</h1>
+                    <div class="mb-3" style="line-height:1">
+                        <p>Enter two binay strings ('1's and '0's only) in the input filed,, below</p>
+                        <p>Standard logical operations are displayed</p>
+                        <p>Note: entered bit strings are sign extended in the output if the 2 bit strings are different lengths </p>
+                    </div>
                     <form>
-
-                        <div class="form-group">
-                            <label for="Bit_Logic_Input_1">Input Bit String</label>
-                            <input id="Bit_Logic_Input_1" v-model="Bit_Logic_Input_1" required placeholder="Enter a Bit String" />
-                            <label for="Bit_Logic_Input_2">Input Bit String</label>
-                            <input id="Bit_Logic_Input_2" v-model="Bit_Logic_Input_2" required placeholder="Enter a Bit String" />
+                        <div class="form-group mb-3">
+                            <div class="mb-3">
+                                <input v-on:keyup="updateBL1" id="Bit_Logic_Input_1" v-model="Bit_Logic_Input_1" required placeholder="Enter a Bit String 1" />
+                                <!-- </div>
+                            <div class="mb-3"> -->
+                                <input v-on:keyup="updateBL2" id="Bit_Logic_Input_2" v-model="Bit_Logic_Input_2" required placeholder="Enter a Bit String 2" />
+                            </div>
                         </div>
-                        <!-- <button type="button" class="btn btn-primary" id="Bit_Logic_Calculate">Calculate</button> -->
-                        <button class="btn btn-primary" v-on:click="calculateBitOps">Calculate</button>
+                        <!-- <button type="button" class="btn btn-primary" v-on:click="calculateBitOps">Calculate</button> -->
 
                     </form>
-                    <!-- <label type="text" id="Bit_Logic_Result_OR"></label><br>
-                    <label type="text" id="Bit_Logic_Result_AND"></label><br>
-                    <label type="text" id="Bit_Logic_Result_NOT"></label> -->
-                    <p>{{ Bit_Logic_Result_OR }}</p>
-                    <p>{{ Bit_Logic_Result_AND }}</p>
-                    <p>{{ Bit_Logic_Result_NOT1 }} {{ Bit_Logic_Result_NOT2}}</p>
+                    <div class="mb-3 float-left">
+                        <br>
+                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                            <div> {{ BLCurrent_1 }}</div>
+                            <div>or {{ BLCurrent_2 }}</div>
+                            <div>
+                                {{ "-".repeat(BLUnderline) }}
+                            </div>
+                            <div> {{ Bit_Logic_Result_OR }}</div>
+                        </div>
+
+                        <br>
+
+                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                            <div> {{ BLCurrent_1 }}</div>
+                            <div>and {{ BLCurrent_2 }}</div>
+                            <div>
+                                {{ "-".repeat(BLUnderline) }}
+                            </div>
+                            <div> {{ Bit_Logic_Result_AND }}</div>
+                        </div>
+
+                        <br>
+
+                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                            <div>not {{ BLCurrent_1 }}</div>
+                            <div>
+                                {{ "-".repeat(BLUnderline) }}
+                            </div>
+                            <div> {{ Bit_Logic_Result_NOT1 }}</div>
+                        </div>
+
+                        <br>
+
+                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                            <div>not {{ BLCurrent_2 }}</div>
+                            <div>
+                                {{ "-".repeat(BLUnderline) }}
+                            </div>
+                            <div> {{ Bit_Logic_Result_NOT2 }}</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -67,23 +108,18 @@
                     </div>
 
                 </div>
-                <div class="col"></div>
             </div>
-<<<<<<< HEAD
-=======
         </div>
-    </div>
 
-    <div class="container container-fluid">
-        <div class="form-group">
-            <textarea id='log' class='form-control' placeholder="All actions get logged here..." rows="25" cols="30"></textarea>
->>>>>>> 915fdabf3a2835abd674052c5e16f37984d454de
-        </div>
+
+        <!-- <div class="container container-fluid">
+            <div class="form-group">
+                <textarea id='log' class='form-control' placeholder="All actions get logged here..." rows="25" cols="30"></textarea>
+            </div>
+        </div> -->
     </div>
 
     <script>
-        // import BitOperations from 'src/BitOperations.js';
-        import BitOperations from '<src/BitOperations.js>';
         new Vue({
             el: '#app',
             data() {
@@ -91,6 +127,9 @@
                     BitOps: null,
                     Bit_Logic_Input_1: '',
                     Bit_Logic_Input_2: '',
+                    BLCurrent_1: '',
+                    BLCurrent_2: '',
+                    BLUnderline: '',
                     Bit_Logic_Result_OR: '',
                     Bit_Logic_Result_AND: '',
                     Bit_Logic_Result_NOT1: '',
@@ -101,24 +140,66 @@
                 this.BitOps = new BitOperations();
             },
             methods: {
-                calculateBitOps(evt) {
-                    console.log(evt);
-
-                    this.Bit_Logic_Result_OR = `${this.Bit_Logic_Input_1} OR ${this.Bit_Logic_Input_2} = ${BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2)}`;
-                    this.Bit_Logic_Result_AND = `${this.Bit_Logic_Input_1} AND ${this.Bit_Logic_Input_3} = ${BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2)}`;
-                    this.Bit_Logic_Result_NOT1 = `NOT ${this.Bit_Logic_Input_1} = ${BitOps.not(this.Bit_Logic_Input_1)}`;
-                    this.Bit_Logic_Result_NOT2 = `NOT ${this.Bit_Logic_Input_2} = ${BitOps.not(this.Bit_Logic_Input_2)}`;
-
-                    //evt.stopPropagation();
+                signExtendInputs(bitString1, bitString2) {
+                    result = bitString1;
+                    if (bitString1.length > 0 && bitString2.length > 0) {
+                        this.BLUnderline = Math.max(bitString1.length, bitString2.length);
+                        let padBit = bitString1.charAt(0);
+                        result = this.BitOps.signExtend(bitString1, this.BLUnderline, padBit);
+                    }
+                    return result;
                 },
+                updateBL1(ent) {
+                    this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+
+                    if (this.Bit_Logic_Input_2) {
+                        this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
+                        this.Bit_Logic_Result_OR = this.BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                        this.Bit_Logic_Result_AND = this.BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                    } else {
+                        this.Bit_Logic_Result_OR = '';
+                        this.Bit_Logic_Result_AND = '';
+                    }
+
+                    if (this.Bit_Logic_Input_1) {
+                        this.Bit_Logic_Result_NOT1 = this.BitOps.not(this.Bit_Logic_Input_1);
+                    } else {
+                        this.Bit_Logic_Result_NOT1 = '';
+                    }
+                },
+                updateBL2(ent) {
+                    //Pad this based on max of both inputs
+                    this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
+
+                    if (this.Bit_Logic_Input_1) {
+                        this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                        this.Bit_Logic_Result_OR = this.BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                        this.Bit_Logic_Result_AND = this.BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                    } else {
+                        this.Bit_Logic_Result_OR = '';
+                        this.Bit_Logic_Result_AND = '';
+                    }
+
+                    if (this.Bit_Logic_Input_2) {
+                        this.Bit_Logic_Result_NOT2 = this.BitOps.not(this.Bit_Logic_Input_2);
+                    } else {
+                        this.Bit_Logic_Result_NOT2 = '';
+                    }
+                },
+                // calculateBitOps(evt) {
+                //     console.log(evt);
+
+                //     this.Bit_Logic_Result_OR = this.BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                //     this.Bit_Logic_Result_AND = `${this.Bit_Logic_Input_1} AND ${this.Bit_Logic_Input_2} = ${this.BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2)}`;
+                //     this.Bit_Logic_Result_NOT1 = `NOT ${this.Bit_Logic_Input_1} = ${this.BitOps.not(this.Bit_Logic_Input_1)}`;
+                //     this.Bit_Logic_Result_NOT2 = `NOT ${this.Bit_Logic_Input_2} = ${this.BitOps.not(this.Bit_Logic_Input_2)}`;
+
+                //     //evt.stopPropagation();
+                // },
 
             }
         })
     </script>
-
-    <style>
-
-    </style>
 
     <!-- <script src="src/BitOperations.js"></script> -->
     <!-- <script src="src/WebBitOps.js"></script> -->
