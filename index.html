@@ -8,9 +8,7 @@
 
     <script language="javascript" type="text/javascript" src="./style/jquery-3.3.1.min.js"></script>
     <script language="javascript" type="text/javascript" src="./style/vue2Dev.js"></script>
-    <!-- <script language="javascript" type="text/javascript" src="./style/popper.min.js"></script> -->
     <script language="javascript" type="text/javascript" src="./style/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- <script language="javascript" type="text/javascript" src="./style/toast-1.4/toast/toast.js"></script> -->
 
     <link rel="stylesheet" type="text/css" href="./style/bootstrap-4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./style/toast-1.4/toast/toast.css" />
@@ -37,82 +35,93 @@
                         <div class="form-group mb-3">
                             <div class="mb-3">
                                 <input v-on:keyup="updateBL1" id="Bit_Logic_Input_1" v-model="Bit_Logic_Input_1" required placeholder="Enter a Bit String 1" />
-                                <!-- </div>
-                            <div class="mb-3"> -->
                                 <input v-on:keyup="updateBL2" id="Bit_Logic_Input_2" v-model="Bit_Logic_Input_2" required placeholder="Enter a Bit String 2" />
                             </div>
                         </div>
-                        <!-- <button type="button" class="btn btn-primary" v-on:click="calculateBitOps">Calculate</button> -->
 
                     </form>
-                    <div class="mb-3 float-left">
-                        <br>
-                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
-                            <div> {{ BLCurrent_1 }}</div>
-                            <div>or {{ BLCurrent_2 }}</div>
-                            <div>
-                                {{ "-".repeat(BLUnderline) }}
+
+                    <div class="container mb-3">
+                        <div class="row">
+                            <div class="col row mb-3 float-left">
+                                <!-- <div class="mb-3 float-left"> -->
+                                <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                                    <div> {{ BLCurrent_1 }}</div>
+                                    <div>or {{ BLCurrent_2 }}</div>
+                                    <div>
+                                        {{ "-".repeat(BLUnderline) }}
+                                    </div>
+                                    <div> {{ Bit_Logic_Result_OR }}</div>
+                                </div>
+                                <!-- </div> -->
                             </div>
-                            <div> {{ Bit_Logic_Result_OR }}</div>
-                        </div>
-
-                        <br>
-
-                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
-                            <div> {{ BLCurrent_1 }}</div>
-                            <div>and {{ BLCurrent_2 }}</div>
-                            <div>
-                                {{ "-".repeat(BLUnderline) }}
+                            <div class="col row mb-3 float-left">
+                                <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                                    <div> {{ BLCurrent_1 }}</div>
+                                    <div>and {{ BLCurrent_2 }}</div>
+                                    <div>
+                                        {{ "-".repeat(BLUnderline) }}
+                                    </div>
+                                    <div> {{ Bit_Logic_Result_AND }}</div>
+                                </div>
                             </div>
-                            <div> {{ Bit_Logic_Result_AND }}</div>
-                        </div>
-
-                        <br>
-
-                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
-                            <div>not {{ Bit_Logic_Input_1 }}</div>
-                            <div>
-                                {{ "-".repeat(Bit_Logic_Input_1.length) }}
-                            </div>
-                            <div> {{ Bit_Logic_Result_NOT1 }}</div>
-                        </div>
-
-                        <br>
-
-                        <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
-                            <div>not {{ Bit_Logic_Input_2 }}</div>
-                            <div>
-                                {{ "-".repeat(Bit_Logic_Input_2.length) }}
-                            </div>
-                            <div> {{ Bit_Logic_Result_NOT2 }}</div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h1>Binary Arithmetic</h1>
 
-                        <form>
-                            <div class="form-group">
-                                <label for="Bit_Math_Input_1">Input Bit String</label>
-                                <input type="text" class="form-control" id="Bit_Math_Input_1" placeholder="Enter a Bit String">
-                                <label for="Bit_Math_Input_2">Input Bit String</label>
-                                <input type="text" class="form-control" id="Bit_Math_Input_2" placeholder="Enter a Bit String">
+
+
+
+
+                    <div class="row">
+                        <div class="col row mb-3 float-left">
+                            <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                                <div>not {{ Bit_Logic_Input_1 }}</div>
+                                <div>
+                                    {{ "-".repeat(Bit_Logic_Input_1.length) }}
+                                </div>
+                                <div> {{ Bit_Logic_Result_NOT1 }}</div>
                             </div>
-                            <button type="button" class="btn btn-primary" id="Bit_Math_Calculate">Calculate</button>
-
-                        </form>
-                        <label type="text" id="Bit_Math_Result_Add"></label><br>
-                        <label type="text" id="Bit_Math_Result_Decimal"></label><br>
-                        <label type="text" id="Bit_Math_Result_Hex"></label>
+                        </div>
+                        <div class="col row mb-3 float-left">
+                            <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
+                                <div>not {{ Bit_Logic_Input_2 }}</div>
+                                <div>
+                                    {{ "-".repeat(Bit_Logic_Input_2.length) }}
+                                </div>
+                                <div> {{ Bit_Logic_Result_NOT2 }}</div>
+                            </div>
+                        </div>
                     </div>
+
 
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <h1>Binary Arithmetic</h1>
+
+                <form>
+                    <div class="form-group">
+                        <label for="Bit_Math_Input_1">Input Bit String</label>
+                        <input type="text" class="form-control" id="Bit_Math_Input_1" placeholder="Enter a Bit String">
+                        <label for="Bit_Math_Input_2">Input Bit String</label>
+                        <input type="text" class="form-control" id="Bit_Math_Input_2" placeholder="Enter a Bit String">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="Bit_Math_Calculate">Calculate</button>
+
+                </form>
+                <label type="text" id="Bit_Math_Result_Add"></label><br>
+                <label type="text" id="Bit_Math_Result_Decimal"></label><br>
+                <label type="text" id="Bit_Math_Result_Hex"></label>
+            </div>
+
+        </div>
+    </div>
+    </div>
 
 
-        <!-- <div class="container container-fluid">
+    <!-- <div class="container container-fluid">
             <div class="form-group">
                 <textarea id='log' class='form-control' placeholder="All actions get logged here..." rows="25" cols="30"></textarea>
             </div>
