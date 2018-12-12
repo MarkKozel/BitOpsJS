@@ -1,8 +1,19 @@
-/** Class containing bit arithmatic and logic operations
- * 
+/** 
+ * Class containing bit arithmatic and logic operations
  */
 class BitOperations {
-    constructor() {};
+
+    /**
+     * Constructor
+     * @param {Stirng} undef representation of undefined
+     */
+    constructor(undef = this.undef) {
+        this.undef = "undef";
+    };
+
+    getUndef() {
+        return this.undef;
+    }
 
     /**
      * Adds 2 bit strings. Provides sum and carry out results
@@ -34,23 +45,23 @@ class BitOperations {
             results.carryOut = lastCarryOut;
 
         } else {
-            results.sum = "undef";
-            results.carryOut = "undef";
+            results.sum = this.undef;
+            results.carryOut = this.undef;
         }
         return results;
     }
 
     /**
-     * Adds 1 bits
+     * Adds 2 bits and a carry in
      * @param {Number} bit1 first bit to add
      * @param {Number} bit2 second bit to add
      * @param {Number} carryIn carry in bit (default to 0 if not supplied)
-     * returns {sum, carryOut}. Contains sum/carryOut or {"undef","undef"} if params are not bits
+     * returns {sum, carryOut}. Contains sum/carryOut or {undef,undef} if params are not bits
      */
     addBits(bit1, bit2, carryIn = 0) {
         let results = {
-            "sum": "undef",
-            "carryOut": "undef"
+            "sum": this.undef,
+            "carryOut": this.undef
         };
 
         switch (bit1 + bit2 + carryIn) {
@@ -71,8 +82,8 @@ class BitOperations {
                 results.carryOut = 1;
                 break;
             default:
-                results.sum = "undef";
-                results.carryOut = "undef";
+                results.sum = this.undef;
+                results.carryOut = this.undef;
         }
         return results;
     }
@@ -101,7 +112,7 @@ class BitOperations {
     /**
      * Determines if bitString is a bit string
      * @param {String} bitString
-     * returns returns true if bitString is a bit string. Returns false otherwise
+     * returns true if bitString is a bit string. Returns false otherwise
      */
     isBitString(bitString) {
         return /^[01]+$/.test(bitString);
@@ -150,7 +161,7 @@ class BitOperations {
                 }
             }
         } else {
-            result = "undef";
+            result = this.undef;
         }
 
         return result
@@ -176,7 +187,7 @@ class BitOperations {
                 }
             }
         } else {
-            result = "undef";
+            result = this.undef;
         }
 
         return result
@@ -188,8 +199,8 @@ class BitOperations {
      */
     convert(bitString) {
         let results = {
-            "decimal": "undef",
-            "hexadecimal": "undef"
+            "decimal": this.undef,
+            "hexadecimal": this.undef
         };
 
         if ((typeof bitString === 'string') && (this.isBitString(bitString))) {

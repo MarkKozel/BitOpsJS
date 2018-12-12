@@ -3,12 +3,14 @@
  */
 var BitOps = require('../src/BitOperations.js');
 var bitOps;
+var undef;
 
 /**
  * Setup before starting tests
  */
 beforeAll(() => {
     bitOps = new BitOps();
+    undef = bitOps.getUndef();
 })
 
 /**
@@ -24,11 +26,11 @@ describe('Not', () => {
     });
 
     test('Test not(2)', () => {
-        expect(bitOps.not('2')).toBe('undef');
+        expect(bitOps.not('2')).toBe(undef);
     });
 
     test('Test not(101r)', () => {
-        expect(bitOps.not('2')).toBe('undef');
+        expect(bitOps.not('2')).toBe(undef);
     });
 });
 
@@ -37,9 +39,9 @@ describe('Not', () => {
  */
 describe('And', () => {
     test('Invalid Inputs', () => {
-        expect(bitOps.and('2', '1')).toBe('undef');
-        expect(bitOps.and('zdsdfg', '0')).toBe('undef');
-        expect(bitOps.and('', '1010101')).toBe('undef');
+        expect(bitOps.and('2', '1')).toBe(undef);
+        expect(bitOps.and('zdsdfg', '0')).toBe(undef);
+        expect(bitOps.and('', '1010101')).toBe(undef);
     });
 
     test('Valid single bit Inputs', () => {
@@ -63,9 +65,9 @@ describe('And', () => {
  */
 describe('Or', () => {
     test('Invalid Inputs', () => {
-        expect(bitOps.or('2', '1')).toBe('undef');
-        expect(bitOps.or('zdsdfg', '0')).toBe('undef');
-        expect(bitOps.or('', '1010101')).toBe('undef');
+        expect(bitOps.or('2', '1')).toBe(undef);
+        expect(bitOps.or('zdsdfg', '0')).toBe(undef);
+        expect(bitOps.or('', '1010101')).toBe(undef);
     });
 
     test('Valid single bit Inputs', () => {

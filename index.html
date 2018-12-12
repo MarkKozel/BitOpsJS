@@ -148,10 +148,14 @@
                     }
                     return result;
                 },
+                /**
+                 * Called on 'keyup' event for Bit Logic Input 2
+                 */
                 updateBL1(ent) {
                     this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
 
                     if (this.Bit_Logic_Input_2) {
+                        //Since the other input has user input, ok to sign extend and perform OR/AND functions
                         this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
                         this.Bit_Logic_Result_OR = this.BitOps.or(this.BLCurrent_1, this.BLCurrent_2);
                         this.Bit_Logic_Result_AND = this.BitOps.and(this.BLCurrent_1, this.BLCurrent_2);
@@ -166,11 +170,15 @@
                         this.Bit_Logic_Result_NOT1 = '';
                     }
                 },
+                /**
+                 * Called on 'keyup' event for Bit Logic Input 2
+                 */
                 updateBL2(ent) {
                     //Pad this based on max of both inputs
                     this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
 
                     if (this.Bit_Logic_Input_1) {
+                        //Since the other input has user input, ok to sign extend and perform OR/AND functions
                         this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
                         this.Bit_Logic_Result_OR = this.BitOps.or(this.BLCurrent_1, this.BLCurrent_2);
                         this.Bit_Logic_Result_AND = this.BitOps.and(this.BLCurrent_1, this.BLCurrent_2);
@@ -185,23 +193,9 @@
                         this.Bit_Logic_Result_NOT2 = '';
                     }
                 },
-                // calculateBitOps(evt) {
-                //     console.log(evt);
-
-                //     this.Bit_Logic_Result_OR = this.BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
-                //     this.Bit_Logic_Result_AND = `${this.Bit_Logic_Input_1} AND ${this.Bit_Logic_Input_2} = ${this.BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2)}`;
-                //     this.Bit_Logic_Result_NOT1 = `NOT ${this.Bit_Logic_Input_1} = ${this.BitOps.not(this.Bit_Logic_Input_1)}`;
-                //     this.Bit_Logic_Result_NOT2 = `NOT ${this.Bit_Logic_Input_2} = ${this.BitOps.not(this.Bit_Logic_Input_2)}`;
-
-                //     //evt.stopPropagation();
-                // },
-
             }
         })
     </script>
-
-    <!-- <script src="src/BitOperations.js"></script> -->
-    <!-- <script src="src/WebBitOps.js"></script> -->
 
 </body>
 

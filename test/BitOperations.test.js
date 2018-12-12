@@ -3,12 +3,14 @@
  */
 var BitOps = require('../src/BitOperations.js');
 var bitOps;
+var undef;
 
 /**
  * Setup before starting tests
  */
 beforeAll(() => {
-    bitOps = new BitOps();
+    bitOps = new BitOps(-1);
+    undef = bitOps.getUndef();
 })
 
 /**
@@ -124,20 +126,20 @@ describe('Add Bit Strings', () => {
 
     test('Bad bit strings', () => {
         var result = bitOps.addBitStrings("01200", "11110");
-        expect(result).toHaveProperty("sum", "undef");
-        expect(result).toHaveProperty("carryOut", "undef");
+        expect(result).toHaveProperty("sum", undef);
+        expect(result).toHaveProperty("carryOut", undef);
 
         result = bitOps.addBitStrings("01100", "1A110");
-        expect(result).toHaveProperty("sum", "undef");
-        expect(result).toHaveProperty("carryOut", "undef");
+        expect(result).toHaveProperty("sum", undef);
+        expect(result).toHaveProperty("carryOut", undef);
 
         result = bitOps.addBitStrings("", "11110");
-        expect(result).toHaveProperty("sum", "undef");
-        expect(result).toHaveProperty("carryOut", "undef");
+        expect(result).toHaveProperty("sum", undef);
+        expect(result).toHaveProperty("carryOut", undef);
 
         result = bitOps.addBitStrings("01100", "");
-        expect(result).toHaveProperty("sum", "undef");
-        expect(result).toHaveProperty("carryOut", "undef");
+        expect(result).toHaveProperty("sum", undef);
+        expect(result).toHaveProperty("carryOut", undef);
     });
 });
 
@@ -186,16 +188,16 @@ describe('Conversions', () => {
     var result;
     test('invalid inputs', () => {
         result = bitOps.convert("022000");
-        expect(result.decimal).toBe("undef");
-        expect(result.hexadecimal).toBe("undef");
+        expect(result.decimal).toBe(undef);
+        expect(result.hexadecimal).toBe(undef);
 
         result = bitOps.convert("ASDF");
-        expect(result.decimal).toBe("undef");
-        expect(result.hexadecimal).toBe("undef");
+        expect(result.decimal).toBe(undef);
+        expect(result.hexadecimal).toBe(undef);
 
         result = bitOps.convert("");
-        expect(result.decimal).toBe("undef");
-        expect(result.hexadecimal).toBe("undef");
+        expect(result.decimal).toBe(undef);
+        expect(result.hexadecimal).toBe(undef);
     });
 
     test('Good inputs', () => {
