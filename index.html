@@ -29,9 +29,9 @@
                 <div class="col">
                     <h1>Binary Logic</h1>
                     <div class="mb-3" style="line-height:1">
-                        <p>Enter two binay strings ('1's and '0's only) in the input filed,, below</p>
+                        <p>Enter two binay strings ('1's and '0's only) in the input filed, below</p>
                         <p>Standard logical operations are displayed</p>
-                        <p>Note: entered bit strings are sign extended in the output if the 2 bit strings are different lengths </p>
+                        <p>Note: entered bit strings are padded with zero in the output if the 2 bit strings are different lengths </p>
                     </div>
                     <form>
                         <div class="form-group mb-3">
@@ -70,9 +70,9 @@
                         <br>
 
                         <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
-                            <div>not {{ BLCurrent_1 }}</div>
+                            <div>not {{ Bit_Logic_Input_1 }}</div>
                             <div>
-                                {{ "-".repeat(BLUnderline) }}
+                                {{ "-".repeat(Bit_Logic_Input_1.length) }}
                             </div>
                             <div> {{ Bit_Logic_Result_NOT1 }}</div>
                         </div>
@@ -80,9 +80,9 @@
                         <br>
 
                         <div class="text-sm-right" style="font-family: Courier New, monospace; line-height:1">
-                            <div>not {{ BLCurrent_2 }}</div>
+                            <div>not {{ Bit_Logic_Input_2 }}</div>
                             <div>
-                                {{ "-".repeat(BLUnderline) }}
+                                {{ "-".repeat(Bit_Logic_Input_2.length) }}
                             </div>
                             <div> {{ Bit_Logic_Result_NOT2 }}</div>
                         </div>
@@ -145,7 +145,7 @@
                     if (bitString1.length > 0 && bitString2.length > 0) {
                         this.BLUnderline = Math.max(bitString1.length, bitString2.length);
                         let padBit = bitString1.charAt(0);
-                        result = this.BitOps.signExtend(bitString1, this.BLUnderline, padBit);
+                        result = this.BitOps.signExtend(bitString1, this.BLUnderline, "0");
                     }
                     return result;
                 },
@@ -154,8 +154,8 @@
 
                     if (this.Bit_Logic_Input_2) {
                         this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
-                        this.Bit_Logic_Result_OR = this.BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
-                        this.Bit_Logic_Result_AND = this.BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                        this.Bit_Logic_Result_OR = this.BitOps.or(this.BLCurrent_1, this.BLCurrent_2);
+                        this.Bit_Logic_Result_AND = this.BitOps.and(this.BLCurrent_1, this.BLCurrent_2);
                     } else {
                         this.Bit_Logic_Result_OR = '';
                         this.Bit_Logic_Result_AND = '';
@@ -173,8 +173,8 @@
 
                     if (this.Bit_Logic_Input_1) {
                         this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
-                        this.Bit_Logic_Result_OR = this.BitOps.or(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
-                        this.Bit_Logic_Result_AND = this.BitOps.and(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                        this.Bit_Logic_Result_OR = this.BitOps.or(this.BLCurrent_1, this.BLCurrent_2);
+                        this.Bit_Logic_Result_AND = this.BitOps.and(this.BLCurrent_1, this.BLCurrent_2);
                     } else {
                         this.Bit_Logic_Result_OR = '';
                         this.Bit_Logic_Result_AND = '';
