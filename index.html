@@ -23,92 +23,131 @@
 <body>
     <div id="app">
         <div class="container container-fluid">
-            <div class="row">
-                <div class="col">
-                    <h1>Binary Logic</h1>
-                    <div class="mb-3" style="line-height:1">
-                        <p>Enter two binay strings ('1's and '0's only) in the input filed, below</p>
-                        <p>Standard logical operations are displayed</p>
-                        <p>Note: entered bit strings are padded with zero in the output if the 2 bit strings are different lengths </p>
-                    </div>
-                    <form>
-                        <div class="form-group mb-3">
-                            <div class="mb-3">
-                                <input v-on:keyup="updateBL1" id="Bit_Logic_Input_1" v-model="Bit_Logic_Input_1" required placeholder="Enter a Bit String 1" />
-                                <input v-on:keyup="updateBL2" id="Bit_Logic_Input_2" v-model="Bit_Logic_Input_2" required placeholder="Enter a Bit String 2" />
-                            </div>
-                        </div>
-
-                    </form>
-
-                    <div class="table-responsive-sm">
-                        <div class="text-right float-left" style="font-family: Courier New, monospace; line-height:1">
-                            <table class="table table-md table-dark">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div> {{ BLCurrent_1 }}</div>
-                                            <div>or {{ BLCurrent_2 }}</div>
-                                            <div>
-                                                {{ "-".repeat(BLUnderline) }}
-                                            </div>
-                                            <div> {{ Bit_Logic_Result_OR }}</div>
-                                        </td>
-                                        <td>
-                                            <div> {{ BLCurrent_1 }}</div>
-                                            <div>and {{ BLCurrent_2 }}</div>
-                                            <div>
-                                                {{ "-".repeat(BLUnderline) }}
-                                            </div>
-                                            <div> {{ Bit_Logic_Result_AND }}</div>
-                                        </td>
-                                        <tr>
-                                            <td>
-                                                <div>not {{ Bit_Logic_Input_1 }}</div>
-                                                <div>
-                                                    {{ "-".repeat(Bit_Logic_Input_1.length) }}
-                                                </div>
-                                                <div> {{ Bit_Logic_Result_NOT1 }}</div>
-                                            </td>
-                                            <td>
-                                                <div>not {{ Bit_Logic_Input_2 }}</div>
-                                                <div>
-                                                    {{ "-".repeat(Bit_Logic_Input_2.length) }}
-                                                </div>
-                                                <div> {{ Bit_Logic_Result_NOT2 }}</div>
-                                            </td>
-                                        </tr>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-                </div>
+            <!-- <div class="row">
+                <div class="col"> -->
+            <h1>Binary Logic</h1>
+            <div class="mb-3" style="line-height:1">
+                <p>Enter two binay strings ('1's and '0's only) in the input filed, below</p>
+                <p>Standard logical operations are displayed</p>
+                <p>Note: entered bit strings are padded with zero in the output if the 2 bit strings are different lengths </p>
             </div>
-            <div class="row">
-                <div class="col">
-                    <h1>Binary Arithmetic</h1>
-
-                    <form>
-                        <div class="form-group">
-                            <label for="Bit_Math_Input_1">Input Bit String</label>
-                            <input type="text" class="form-control" id="Bit_Math_Input_1" placeholder="Enter a Bit String">
-                            <label for="Bit_Math_Input_2">Input Bit String</label>
-                            <input type="text" class="form-control" id="Bit_Math_Input_2" placeholder="Enter a Bit String">
-                        </div>
-                        <button type="button" class="btn btn-primary" id="Bit_Math_Calculate">Calculate</button>
-
-                    </form>
-                    <label type="text" id="Bit_Math_Result_Add"></label><br>
-                    <label type="text" id="Bit_Math_Result_Decimal"></label><br>
-                    <label type="text" id="Bit_Math_Result_Hex"></label>
+            <form>
+                <div class="form-group mb-3">
+                    <div class="mb-3">
+                        <input v-on:keyup="updateBL1" id="Bit_Logic_Input_1" v-model="Bit_Logic_Input_1" required placeholder="Enter a Bit String 1" />
+                        <input v-on:keyup="updateBL2" id="Bit_Logic_Input_2" v-model="Bit_Logic_Input_2" required placeholder="Enter a Bit String 2" />
+                    </div>
                 </div>
 
+            </form>
+
+            <div class="table-responsive-sm">
+                <div class="text-right float-left" style="font-family: Courier New, monospace; line-height:1">
+                    <table class="table table-md table-dark">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div> {{ BLCurrent_1 }}</div>
+                                    <div>or {{ BLCurrent_2 }}</div>
+                                    <div>{{ "-".repeat(BLUnderline) }}</div>
+                                    <div> {{ Bit_Logic_Result_OR }}</div>
+                                </td>
+                                <td>
+                                    <div> {{ BLCurrent_1 }}</div>
+                                    <div>and {{ BLCurrent_2 }}</div>
+                                    <div>{{ "-".repeat(BLUnderline) }}</div>
+                                    <div> {{ Bit_Logic_Result_AND }}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>not {{ Bit_Logic_Input_1 }}</div>
+                                    <div>{{ "-".repeat(Bit_Logic_Input_1.length) }}</div>
+                                    <div> {{ Bit_Logic_Result_NOT1 }}</div>
+                                </td>
+                                <td>
+                                    <div>not {{ Bit_Logic_Input_2 }}</div>
+                                    <div>{{ "-".repeat(Bit_Logic_Input_2.length) }}</div>
+                                    <div> {{ Bit_Logic_Result_NOT2 }}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
+
+        <div class="container container-fluid">
+            <!-- <div class="row">
+              <div class="col"> -->
+            <h1>Binary Arithmetic</h1>
+            <div class="mb-3" style="line-height:1">
+                <p>Enter two binay strings ('1's and '0's only) in the input filed, below</p>
+                <p>Standard logical operations are displayed</p>
+                <p>Note: entered bit strings are padded with zero in the output if the 2 bit strings are different lengths </p>
+            </div>
+            <form>
+                <div class="form-group mb-3">
+                    <div class="mb-3">
+                        <input v-on:keyup="updateBA1" id="Bit_Arith_Input_1" v-model="Bit_Arith_Input_1" required placeholder="Enter a Bit String 1" />
+                        <input v-on:keyup="updateBA2" id="Bit_Arith_Input_2" v-model="Bit_Arith_Input_2" required placeholder="Enter a Bit String 2" />
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="table-responsive-sm">
+                <div class="text-right float-left" style="font-family: Courier New, monospace; line-height:1">
+                    <table class="table table-md table-dark">
+                        <tbody>
+                            <tr>
+
+                                <td>
+                                    <div> {{ BACurrent_1 }}</div>
+                                    <div>+ {{ BACurrent_2 }}</div>
+                                    <div>{{ "-".repeat(BAUnderline) }}</div>
+                                    <div> {{ Bit_Arith_Result_Add }}<sub>2</sub></div>
+
+                                    <div> {{ Bit_Arith_Result_Overrun }}</div>
+
+                                    <div> {{ Bit_Arith_Result_Decimal }}<sub>10</sub></div>
+
+                                    <div> {{ Bit_Arith_Result_Hex }} <sub>16</sub></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="container container-fluid"></div> -->
+        <!-- </div>
+            </div> -->
+        <!-- <div class="row">
+            <div class="col"> -->
+        <!-- <h1>Binary Arithmetic</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="Bit_Math_Input_1">Input Bit String</label>
+                <input type="text" class="form-control" id="Bit_Math_Input_1" placeholder="Enter a Bit String">
+                <label for="Bit_Math_Input_2">Input Bit String</label>
+                <input type="text" class="form-control" id="Bit_Math_Input_2" placeholder="Enter a Bit String">
+            </div>
+            <button type="button" class="btn btn-primary" id="Bit_Math_Calculate">Calculate</button>
+
+        </form>
+        <label type="text" id="Bit_Math_Result_Add"></label><br>
+        <label type="text" id="Bit_Math_Result_Decimal"></label><br>
+        <label type="text" id="Bit_Math_Result_Hex"></label> -->
+        <!-- </div>
+
+        </div> -->
     </div>
+    <!-- </div> -->
 
 
     <!-- <div class="container container-fluid">
@@ -133,30 +172,49 @@
                     Bit_Logic_Result_AND: '',
                     Bit_Logic_Result_NOT1: '',
                     Bit_Logic_Result_NOT2: '',
+
+                    Bit_Arith_Input_1: '',
+                    Bit_Arith_Input_2: '',
+                    BACurrent_1: '',
+                    BACurrent_2: '',
+                    BAUnderline: '',
+                    Bit_Arith_Result_Add: '',
+                    Bit_Arith_Result_Overrun: '',
+                    Bit_Arith_Result_Decimal: '',
+                    Bit_Arith_Result_Hex: ''
                 }
             },
             mounted: function() {
                 this.BitOps = new BitOperations();
             },
             methods: {
-                signExtendInputs(bitString1, bitString2) {
+                signExtendInputs(bitString1, bitString2, type) {
                     result = bitString1;
+                    let padBit = '';
+
                     if (bitString1.length > 0 && bitString2.length > 0) {
-                        this.BLUnderline = Math.max(bitString1.length, bitString2.length);
-                        let padBit = bitString1.charAt(0);
-                        result = this.BitOps.signExtend(bitString1, this.BLUnderline, "0");
+
+                        if (type === "Logic") {
+                            this.BLUnderline = Math.max(bitString1.length, bitString2.length);
+                            padBit = "0";
+                        }
+                        if (type === "Arithmetic") {
+                            this.BAUnderline = Math.max(bitString1.length, bitString2.length);
+                            padBit = bitString1.charAt(0);
+                        }
+                        result = this.BitOps.signExtend(bitString1, this.BLUnderline, padBit);
                     }
                     return result;
                 },
                 /**
-                 * Called on 'keyup' event for Bit Logic Input 2
+                 * Called on 'keyup' event for Bit Logic Input 1
                  */
                 updateBL1(ent) {
-                    this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                    this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2, "Logic");
 
                     if (this.Bit_Logic_Input_2) {
                         //Since the other input has user input, ok to sign extend and perform OR/AND functions
-                        this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
+                        this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1, "Logic");
                         this.Bit_Logic_Result_OR = this.BitOps.or(this.BLCurrent_1, this.BLCurrent_2);
                         this.Bit_Logic_Result_AND = this.BitOps.and(this.BLCurrent_1, this.BLCurrent_2);
                     } else {
@@ -175,11 +233,11 @@
                  */
                 updateBL2(ent) {
                     //Pad this based on max of both inputs
-                    this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1);
+                    this.BLCurrent_2 = this.signExtendInputs(this.Bit_Logic_Input_2, this.Bit_Logic_Input_1, "Logic");
 
                     if (this.Bit_Logic_Input_1) {
                         //Since the other input has user input, ok to sign extend and perform OR/AND functions
-                        this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2);
+                        this.BLCurrent_1 = this.signExtendInputs(this.Bit_Logic_Input_1, this.Bit_Logic_Input_2, "Logic");
                         this.Bit_Logic_Result_OR = this.BitOps.or(this.BLCurrent_1, this.BLCurrent_2);
                         this.Bit_Logic_Result_AND = this.BitOps.and(this.BLCurrent_1, this.BLCurrent_2);
                     } else {
@@ -191,6 +249,55 @@
                         this.Bit_Logic_Result_NOT2 = this.BitOps.not(this.Bit_Logic_Input_2);
                     } else {
                         this.Bit_Logic_Result_NOT2 = '';
+                    }
+                },
+
+                /**
+                 * Called on 'keyup' event for Bit Arith Input 1
+                 */
+                updateBA1(ent) {
+                    this.BACurrent_1 = this.signExtendInputs(this.Bit_Arith_Input_1, this.Bit_Arith_Input_2, "Arithmetic");
+
+                    if (this.Bit_Arith_Input_2) {
+                        //Since the other input has user input, ok to sign extend and perform OR/AND functions
+                        this.BACurrent_2 = this.signExtendInputs(this.Bit_Arith_Input_2, this.Bit_Arith_Input_1, "Arithmetic");
+
+                        var addition = this.BitOps.addBitStrings(this.BACurrent_1, this.BACurrent_2);
+                        this.Bit_Arith_Result_Add = addition.sum;
+                        this.Bit_Arith_Result_Overrun = addition.carryOut;
+
+                        var conversion = this.BitOps.convert(this.Bit_Arith_Result_Add);
+                        this.Bit_Arith_Result_Decimal = conversion.decimal;
+                        this.Bit_Arith_Result_Hex = conversion.hexadecimal;
+                    } else {
+                        this.Bit_Arith_Result_Add = '';
+                        this.Bit_Arith_Result_Add_Overrun = '';
+                        this.Bit_Arith_Result_Decimal = '';
+                        this.Bit_Arith_Result_Hex = '';
+                    }
+                },
+                /**
+                 * Called on 'keyup' event for Bit Logic Input 2
+                 */
+                updateBA2(ent) {
+                    this.BACurrent_2 = this.signExtendInputs(this.Bit_Arith_Input_2, this.Bit_Arith_Input_1, "Arithmetic");
+
+                    if (this.Bit_Arith_Input_1) {
+                        //Since the other input has user input, ok to sign extend and perform OR/AND functions
+                        this.BACurrent_1 = this.signExtendInputs(this.Bit_Arith_Input_1, this.Bit_Arith_Input_2);
+
+                        var addition = this.BitOps.addBitStrings(this.BACurrent_1, this.BACurrent_2, "Arithmetic");
+                        this.Bit_Arith_Result_Add = addition.sum;
+                        this.Bit_Arith_Result_Overrun = addition.carryOut;
+
+                        var conversion = this.BitOps.convert(this.Bit_Arith_Result_Add);
+                        this.Bit_Arith_Result_Decimal = conversion.decimal;
+                        this.Bit_Arith_Result_Hex = conversion.hexadecimal;
+                    } else {
+                        this.Bit_Arith_Result_Add = '';
+                        this.Bit_Arith_Result_Add_Overrun = '';
+                        this.Bit_Arith_Result_Decimal = '';
+                        this.Bit_Arith_Result_Hex = '';
                     }
                 },
             }
