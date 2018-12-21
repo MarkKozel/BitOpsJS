@@ -200,12 +200,19 @@ class BitOperations {
     convert(bitString) {
         let results = {
             "decimal": this.undef,
-            "hexadecimal": this.undef
+            "hexadecimal": this.undef,
+            "ascii": this.undef
         };
 
         if ((typeof bitString === 'string') && (this.isBitString(bitString))) {
             results.decimal = parseInt(bitString, 2).toString(10);
             results.hexadecimal = parseInt(bitString, 2).toString(16);
+            var dec = parseInt(results.decimal);
+            if ((dec > 31) && (dec < 126)) {
+                results.ascii = String.fromCharCode(dec)
+            } else {
+                results.ascii = "non-printable"
+            }
         }
 
         return results;

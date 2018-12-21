@@ -36,7 +36,7 @@ Class will also include helper operation:
 
 ## Testing
 ### Unit testing with Jest
-Created BitOperations.tst.js and BitLogic.test.js to exercise the BitOperations.js class
+Created BitOperations.test.js and BitLogic.test.js to exercise the BitOperations.js class
 
 ## UI
 Converted to [Vue Framwork](https://vuejs.org/) 2.0. This simplified the HTML and JS considerable since no JQuery code is needed
@@ -51,6 +51,12 @@ run **npm run test** to execute Jest Tests in 'watch" mode
 run **npm run doc** to rebuild JSDoc
 
 ## Dev Log
+20181221 - Finished converting to Vue framework. Starting on convering results to SVG elements. Added and tested convert() to also produce ASCII results for decimals between 32 and 125. Not sure how useful thsi really is.
+
+With conversion to Vue, "WebBitOps.js" is no longer needed. all that getElementByID is gone!!!
+
+I should be able to able to condense updateBA1() and updateBA2() into a single function. Likewise with updateBL1() & updateBL2()
+
 20181212 - Working on conversion to Vue. Implemented Bit Logic UI/JS in Vue. Still need to do the Bit Arithmetic. 
 
 Updated BitOperations.js constructor to take "undef" param. The purpose is to allow user (and test code) to define a desired "undefinded" conversion or result. Updated test files to set and use new "undef" param
