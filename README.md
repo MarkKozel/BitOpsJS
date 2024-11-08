@@ -1,6 +1,8 @@
 # BitOpsJS
 ## JavaScript class to perform basic bit-based math and bit-wise operations
 
+** Test of All Repo Push **
+
 ### Files:
 - src/BitOperations.js - ES6 Class containing bit logic and arithmetic operations
 - index.html - Main web page that provides UI/UX to BitOperations functions
